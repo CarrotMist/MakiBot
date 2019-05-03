@@ -1,6 +1,7 @@
 const config = require('./config.json');
 const Discord = require('discord.js');
 const util = require('util');
+var kyle = 0;
 const bot = new Discord.Client({
     disableEveryone: true,
     disabledEvents: ['TYPING_START']
@@ -44,6 +45,18 @@ bot.on("message", async message => {
         else if (cmd === 'ping') { // ping > pong just in case..
             return message.channel.send('pong');
         }
+		
+		else if (cmd === 'kyletoggle') { // toggles the shut the fuck up kyle instance
+			if (kyle === 1){
+				kyle = 0
+				return message.channel.send('yo guys dont bully kyle');
+			}
+			else{
+				kyle = 1
+				return message.channel.send('fuck that guy');
+			}
+            return message.channel.send('fuck that guy');
+        }
 
         // Make sure this command always checks for you. YOU NEVER WANT ANYONE ELSE TO USE THIS COMMAND
         else if (cmd === "eval" && message.author.id === config.owner){ // < checks the message author's id to yours in config.json.
@@ -60,6 +73,10 @@ bot.on("message", async message => {
 
         return message.channel.send(`Use \`${config.prefix}\` to interact with me.`); //help people learn your prefix
     }
+	if (kyle === 1 && message.author.id === '227902744386600960'){ // < checks the message author's id to yours in config.json.
+            message.channel.send(`shut the fuck up kyle`);
+            return;
+        }
     return;
 });
 
