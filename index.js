@@ -46,10 +46,12 @@ bot.on("message", async message => {
             return message.channel.send('pong');
         }
 		
-		else if (cmd === 'suggest') { // creates a formal suggestion
-            return message.channel.send('Suggestion added!');
+		else if (cmd === 'suggest') { // creates a formal suggestion example of sending in a specific channel
+			var x = message.content;
+			x = x.substring(8, x.length - 1);
+            return message.channel.send('Suggestion added!') && bot.channels.get('573703924071137288').send('```'+x+'```');
         }
-		
+			
 		else if (cmd === 'kyletoggle') { // toggles the shut the fuck up kyle instance
 			if (kyle === 1){
 				kyle = 0
