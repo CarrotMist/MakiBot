@@ -27,7 +27,7 @@ bot.on("message", async message => {
     console.log(message.content); // Log chat to console for debugging/testing
     
     if (message.content.indexOf(config.prefix) === 0) { // Message starts with your prefix
-        
+       
         let msg = message.content.slice(config.prefix.length); // slice of the prefix on the message
 
         let args = msg.split(" "); // break the message into part by spaces
@@ -36,7 +36,7 @@ bot.on("message", async message => {
 
         args.shift(); // delete the first word from the args
 
-        
+////////////////PREFIXED COMMANDS\\\\\\\\\\\\\\\\\\\\\\\\\\   
         if (cmd === 'hi' || cmd === 'hello') { // the first command [I don't like ping > pong]
             message.channel.send(`Hi there ${message.author.toString()}`);
             return; 
@@ -44,6 +44,10 @@ bot.on("message", async message => {
 
         else if (cmd === 'ping') { // ping > pong just in case..
             return message.channel.send('pong');
+        }
+		
+		else if (cmd === 'suggest') { // creates a formal suggestion
+            return message.channel.send('Suggestion added!');
         }
 		
 		else if (cmd === 'kyletoggle') { // toggles the shut the fuck up kyle instance
@@ -73,6 +77,9 @@ bot.on("message", async message => {
 
         return message.channel.send(`Use \`${config.prefix}\` to interact with me.`); //help people learn your prefix
     }
+	
+///////////////NON PREFIXED COMMANDS\\\\\\\\\\\\\\\\\\\\\\\\
+	
 	if (kyle === 1 && message.author.id === '227902744386600960'){ // < checks the message author's id to yours in config.json.
             message.channel.send(`shut the fuck up kyle`);
             return;
@@ -91,6 +98,7 @@ function evalCmd(message, code) {
         message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
     }
 }
+
 function clean(text) {
     if (typeof(text) !== 'string') {
         text = util.inspect(text, { depth: 0 });
