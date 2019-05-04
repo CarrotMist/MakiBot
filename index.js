@@ -48,7 +48,9 @@ bot.on("message", async message => {
         }
 		
 		else if (cmd === 'thanos') { // disconnects half the server
-			var memberList = bot.channels.get('573692744602484740').members;
+			const arg = await message.content.slice(message.content.indexOf(" ")+1);
+			console.log(arg);
+			var memberList = await message.guild.channels.find(channel => channel.name === arg).members;
 			var userList = new Array();
 			var count = 0;
             for (let [snowflake, guildMember] of memberList){ 
@@ -59,16 +61,19 @@ bot.on("message", async message => {
 				console.log(userList);
 			}
 			
+			const temp_channel = await message.guild.createChannel('Fading Away', 'voice');
 			var i;
 			for (i = 0; i < count/2; i++) { 
 				var selection = (Math.random() * (count/2)) | 0;
-				message.channel.send('killing: ' + userList[selection]);
-				userList[selection].destroy();
+				var user = message.guild.members.get(userList[selection]);
+				message.channel.send('killing: ' + userList[selection] + " : " + user);
+				await user.setVoiceChannel(temp_channel);
 				userList.splice(selection, selection+1);
-			} 
-			
+			}
+			await temp_channel.delete();
 			return;
         }
+
 		
 		else if (cmd === 'suggest') { // creates a formal suggestion example of sending in a specific channel
 			var x = message.content;
