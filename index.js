@@ -2,13 +2,14 @@ const config = require('./config.json');
 const Discord = require('discord.js');
 const util = require('util');
 var kyle = 0;
+var fuckKyle = ["fuck off", "shut the fuck up kyle", "bro shut up", "hear sum?", "retard says what? kyle: what?", "kyles in paris", ":clap: :clap: :clap: :clap: :clap: :clap: ", "uhh i hate muble rap trash", "guys its called an arnold palmer, trust me i know what im talking about", "class other than barbarian? what?", "hahaha shut up.", "weewoo retard alert", "kyles be like: hur durr", "sorry guys its the tourettes"]
 const bot = new Discord.Client({
     disableEveryone: true,
     disabledEvents: ['TYPING_START']
 });
 
 bot.on("ready", () => {
-    bot.user.setGame('Awesome Fun Game'); //you can set a default game
+    bot.user.setGame('fuck off'); //you can set a default game
     console.log(`Bot is online!\n${bot.users.size} users, in ${bot.guilds.size} servers connected.`);
 });
 
@@ -82,10 +83,15 @@ bot.on("message", async message => {
 	
 ///////////////NON PREFIXED COMMANDS\\\\\\\\\\\\\\\\\\\\\\\\
 	
-	if (kyle === 1 && message.author.id === '227902744386600960'){ // < checks the message author's id to yours in config.json.
-            message.channel.send(`shut the fuck up kyle`);
+	if (kyle === 1 && message.author.id === '227902744386600960'){ // < checks if it's kyle
+            message.channel.send(fuckKyle[Math.random() * 15]);
+        return;
+    }
+	
+	if (message.content.includes('amer')){ // < checks for gamer
+            message.channel.send(`i hate gamer culture`);
             return;
-        }
+        }	
     return;
 });
 
