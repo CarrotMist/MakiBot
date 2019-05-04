@@ -70,6 +70,10 @@ bot.on("message", async message => {
             const code = args.join(" ");
             return evalCmd(message, code);
         }
+		
+		else if (cmd === "restart" && message.author.id === config.owner){ // < checks the message author's id to yours in config.json.
+            return resetBot(message.channel);
+        }
 
         else { // if the command doesn't match anything you can say something or just ignore it
             message.channel.send(`I don't know what command that is.`);
@@ -83,7 +87,7 @@ bot.on("message", async message => {
 	
 ///////////////NON PREFIXED COMMANDS\\\\\\\\\\\\\\\\\\\\\\\\
 	
-	if (kyle === 1 && message.author.id === '227902744386600960'){ // < checks if it's kyle
+	if (kyle === 1 && message.author.id === '178273444041981952'){ // < checks if it's kyle 227902744386600960
             message.channel.send(fuckKyle[Math.random() * 15]);
         return;
     }
@@ -105,6 +109,14 @@ function evalCmd(message, code) {
     } catch (err) {
         message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
     }
+}
+
+// Turn bot off (destroy), then turn it back on
+function resetBot(channel) {
+    // send channel a message that you're resetting bot [optional]
+    channel.send('Restarting...')
+    .then(msg => bot.destroy())
+    .then(() => bot.login(config.token));
 }
 
 function clean(text) {
