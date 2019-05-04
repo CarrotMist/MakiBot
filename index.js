@@ -49,16 +49,16 @@ bot.on("message", async message => {
 		
 		else if (cmd === 'thanos') { // disconnects half the server
 			const arg = await message.content.slice(message.content.indexOf(" ")+1);
-			console.log(arg);
+			//console.log(arg);
 			var memberList = await message.guild.channels.find(channel => channel.name === arg).members;
 			var userList = new Array();
 			var count = 0;
             for (let [snowflake, guildMember] of memberList){ 
-				console.log('snowflake: ' + snowflake);
+				//console.log('snowflake: ' + snowflake);
 				count++;
 				userList[count-1] = snowflake;
-				console.log(count);
-				console.log(userList);
+				//console.log(count);
+				//console.log(userList);
 			}
 			
 			const temp_channel = await message.guild.createChannel('Fading Away', 'voice');
@@ -66,11 +66,12 @@ bot.on("message", async message => {
 			for (i = 0; i < count/2; i++) { 
 				var selection = (Math.random() * (count/2)) | 0;
 				var user = message.guild.members.get(userList[selection]);
-				message.channel.send('killing: ' + userList[selection] + " : " + user);
+				//message.channel.send('killing: ' + userList[selection] + " : " + user);
 				await user.setVoiceChannel(temp_channel);
 				userList.splice(selection, selection+1);
 			}
 			await temp_channel.delete();
+			message.channel.send('Perfectly balanced, as all things should be.');
 			return;
         }
 
