@@ -47,6 +47,29 @@ bot.on("message", async message => {
             return message.channel.send('pong');
         }
 		
+		else if (cmd === 'thanos') { // disconnects half the server
+			var memberList = bot.channels.get('573692744602484740').members;
+			var userList = new Array();
+			var count = 0;
+            for (let [snowflake, guildMember] of memberList){ 
+				console.log('snowflake: ' + snowflake);
+				count++;
+				userList[count-1] = snowflake;
+				console.log(count);
+				console.log(userList);
+			}
+			
+			var i;
+			for (i = 0; i < count/2; i++) { 
+				var selection = (Math.random() * (count/2)) | 0;
+				message.channel.send('killing: ' + userList[selection]);
+				userList[selection].destroy();
+				userList.splice(selection, selection+1);
+			} 
+			
+			return;
+        }
+		
 		else if (cmd === 'suggest') { // creates a formal suggestion example of sending in a specific channel
 			var x = message.content;
 			x = x.substring(8, x.length - 1);
@@ -88,7 +111,8 @@ bot.on("message", async message => {
 ///////////////NON PREFIXED COMMANDS\\\\\\\\\\\\\\\\\\\\\\\\
 	
 	if (kyle === 1 && message.author.id === '178273444041981952'){ // < checks if it's kyle 227902744386600960
-            message.channel.send(fuckKyle[Math.random() * 15]);
+			var y = Math.random() * 15;
+            message.channel.send(fuckKyle[1]);
         return;
     }
 	
