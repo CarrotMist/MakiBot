@@ -28,40 +28,42 @@ client.on('ready', () => {
 client.on('message', message => {
 	if (passableVariables.doBullyKyle == true && )
 
-    if (message.content.startsWith(prefix) && !message.author.bot) {
-        const args = message.content.slice(prefix.length).split(/ +/);
-        const commandName = args.shift().toLowerCase();
+    if (!message.author.bot) {
+    	if (message.content.startsWith(prefix)) {
+    		const args = message.content.slice(prefix.length).split(/ +/);
+       		const commandName = args.shift().toLowerCase();
 
-        if (client.commands.has(commandName)) {
-            const command = client.commands.get(commandName);
+        	if (client.commands.has(commandName)) {
+            	const command = client.commands.get(commandName);
 
-            if (command.args && !args.length) {
-                if (command.usage) {
-                    message.reply('You didn\'t provide arguments to match `' + prefix + command.name + command.usage + '`.');
-                } else {
-                    message.reply('You didn\'t provide arguments.');
-                }
-            }
+            	if (command.args && !args.length) {
+                	if (command.usage) {
+                    	message.reply('You didn\'t provide arguments to match `' + prefix + command.name + command.usage + '`.');
+                	} else {
+                    	message.reply('You didn\'t provide arguments.');
+                	}
+            	}
 
-            try {
-                command.execute(message, args, passableVariables);
-            } catch (e) {
-                console.error(e);
-                message.reply('Error.\n\n' + e);
-            }
-        }
-    }
+            	try {
+                	command.execute(message, args, passableVariables);
+            	} catch (e) {
+                	console.error(e);
+                	message.reply('Error.\n\n' + e);
+            	}
+        	}
+    	}
 
-    if (message.content.contains('@' + client.user.id)) {
-    	message.reply('Use `' + prefix + '` to interact with me.');
-    }
+   		if (message.content.contains('@' + client.user.id)) {
+    		message.reply('Use `' + prefix + '` to interact with me.');
+    	}
 
-    if (passableVariables.doBullyKyle && message.author.id == '227902744386600960') {
-    	message.reply(passableVariables.bullyKylePhrases[Math.random() * bullyKylePhrases.length]);
-    }
+    	if (passableVariables.doBullyKyle && message.author.id == '227902744386600960') {
+    		message.reply(passableVariables.bullyKylePhrases[Math.random() * bullyKylePhrases.length]);
+    	}
 
-    if (message.toLowerCase().replace(/\s/g, '').contains('gamer')) {
-    	message.reply('i hate gamer culture');
+    	if (message.toLowerCase().replace(/\s/g, '').contains('gamer')) {
+    		message.reply('i hate gamer culture');
+    	}
     }
 });
 
