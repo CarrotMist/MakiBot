@@ -4,6 +4,6 @@ module.exports = {
 	args: false,
 	execute(message, args, vars) {
 		message.channel.send('Suggested.');
-		vars.client.channels.get('573703924071137288').send('```' + message.content + '```')
+		vars.client.channels.get('573703924071137288').send('```' + message.content + '```');
 	}
 }
