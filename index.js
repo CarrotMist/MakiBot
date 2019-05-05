@@ -14,6 +14,7 @@ passableVariables.bullyKylePhrases = ["fuck off", "shut the fuck up kyle", "bro 
 passableVariables.client = client;
 passableVariables.config = config;
 
+
 for (const file of commandFiles) {
     const command = require('./commands/' + file);
     client.commands.set(command.name, command);
