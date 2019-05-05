@@ -52,7 +52,7 @@ client.on('message', message => {
         }
     }
 
-    if (message.content.contains('@' + client.user.id)) {
+    if (message.content.includes('@' + client.user.id)) {
     	message.reply('Use `' + prefix + '` to interact with me.');
     }
 
@@ -60,7 +60,7 @@ client.on('message', message => {
     	message.reply(passableVariables.bullyKylePhrases[Math.random() * bullyKylePhrases.length]);
     }
 
-    if (message.toLowerCase().replace(/\s/g, '').contains('gamer')) {
+    if (message.content.includes('amer')) {
     	message.reply('i hate gamer culture');
     }
 });
