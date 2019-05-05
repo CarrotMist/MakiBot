@@ -15,7 +15,7 @@ module.exports = {
 
 		for (let i = 0; i < count / 2; i++) {
 			const selection = (Math.random() * (count / 2)) | 0;
-			message.reply('Killing: ' + userList[selection]);
+			message.channel.send('Killing: ' + userList[selection]);
 			userList[selection].destroy();
 			userList.splice(selection, selection + 1);
 		}

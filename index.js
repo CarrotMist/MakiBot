@@ -38,9 +38,9 @@ client.on('message', message => {
 
             	if (command.args && !args.length) {
                 	if (command.usage) {
-                    	message.reply('You didn\'t provide arguments to match `' + prefix + command.name + command.usage + '`.');
+                    	message.channel.send('You didn\'t provide arguments to match `' + prefix + command.name + command.usage + '`.');
                 	} else {
-                    	message.reply('You didn\'t provide arguments.');
+                    	message.channel.send('You didn\'t provide arguments.');
                 	}
             	}
 
@@ -48,21 +48,21 @@ client.on('message', message => {
                 	command.execute(message, args, passableVariables);
             	} catch (e) {
                 	console.error(e);
-                	message.reply('Error.\n\n' + e);
+                	message.channel.send('Error.\n\n' + e);
             	}
         	}
     	}
 
    		if (message.content.contains('@' + client.user.id)) {
-    		message.reply('Use `' + prefix + '` to interact with me.');
+    		message.channel.send('Use `' + prefix + '` to interact with me.');
     	}
 
     	if (passableVariables.doBullyKyle && message.author.id == '227902744386600960') {
-    		message.reply(passableVariables.bullyKylePhrases[Math.random() * bullyKylePhrases.length]);
+    		message.channel.send(passableVariables.bullyKylePhrases[Math.random() * bullyKylePhrases.length]);
     	}
 
     	if (message.toLowerCase().replace(/\s/g, '').contains('gamer')) {
-    		message.reply('i hate gamer culture');
+    		message.channel.send('i hate gamer culture');
     	}
     }
 });

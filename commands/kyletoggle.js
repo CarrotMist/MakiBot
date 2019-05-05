@@ -6,9 +6,9 @@ module.exports = {
 		vars.doBullyKyle = !vars.doBullyKyle;
 		
 		if (vars.doBullyKyle) {
-			message.reply('fuck that guy');
+			message.channel.send('fuck that guy');
 		} else {
-			message.reply('yo guys dont bully kyle');
+			message.channel.send('yo guys dont bully kyle');
 		}
 	}
 }

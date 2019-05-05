@@ -12,9 +12,9 @@ module.exports = {
 					evaluated = evaluated.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203)).replace(vars.config.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0');
 				}
 
-				message.reply(evaluated, { code:'x1' });
+				message.channel.send(evaluated, { code:'x1' });
 			} catch (err) {
-				message.reply('`ERROR` ```x1\n' + err.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203)).replace(vars.config.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0') + '\n```');
+				message.channel.send('`ERROR` ```x1\n' + err.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203)).replace(vars.config.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0') + '\n```');
 			}
 		}
 	}

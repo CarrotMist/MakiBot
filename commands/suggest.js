@@ -3,7 +3,7 @@ module.exports = {
 	description: 'Makes a suggestion to the bot developers',
 	args: false,
 	execute(message, args, vars) {
-		message.reply('Suggested.');
+		message.channel.send('Suggested.');
 		vars.client.channels.get('573703924071137288').send('```' + message.content + '```')
 	}
 }

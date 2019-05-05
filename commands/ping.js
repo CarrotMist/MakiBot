@@ -3,6 +3,6 @@ module.exports = {
 	description: 'Pong! Tests that the bot is working',
 	args: false,
 	execute(message, args, vars) {
-		message.reply('Pong!');
+		message.channel.send('Pong!');
 	}
 }
