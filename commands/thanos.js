@@ -3,7 +3,7 @@ module.exports = {
 	description: 'Kills half of the members of this channel',
 	args: false,
 	execute(message, args, vars) {
-		const members = vars.client.channels.get('573692744602484740').members;
+		const memberList = vars.client.channels.get('573692744602484740').members;
 		const userList = new Array();
 		let count = 0;
 
