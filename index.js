@@ -51,7 +51,7 @@ client.on('message', message => {
             }
         }
 
-        if (message.content.contains('@' + client.user.id)) {
+        if (message.content.includes('@' + client.user.id)) {
             message.channel.send('Use `' + prefix + '` to interact with me.');
         }
 
@@ -59,7 +59,7 @@ client.on('message', message => {
             message.channel.send(passableVariables.bullyKylePhrases[Math.random() * bullyKylePhrases.length]);
         }
 
-        if (message.toLowerCase().replace(/\s/g, '').contains('gamer')) {
+        if (message.toLowerCase().replace(/\s/g, '').includes('gamer')) {
             message.channel.send('i hate gamer culture');
         }
 
