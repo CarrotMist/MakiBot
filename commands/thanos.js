@@ -17,10 +17,7 @@ module.exports = {
 		const temp_channel = await message.guild.createChannel('Fading Away', 'voice');
 		for (let i = 0; i < count / 2; i++) {
 			const selection = (Math.random() * (count / 2)) | 0;
-
-			message.channel.send('Killing: ' + userList[selection]);
-			userList[selection].destroy();
-
+			
 			const user = message.guild.members.get(userList[selection]);
 			//message.reply('Killing: ' + userList[selection]);
 			await user.setVoiceChannel(temp_channel);
